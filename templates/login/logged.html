@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sindhi Maitriyuen</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" href="{% static 'default.css' %}">
+  <link rel="stylesheet" href="{% static 'login/logged.css' %}">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-left">SindhiMaitriyen.com</div>
+    <div class="nav-center">
+      <a href="{% url 'index' %}">Home</a>
+      <a href="{% url 'services' %}">Services</a>
+      <a href="{% url 'sindhisoc' %}">Sindhi Society</a>
+      <a href="{% url 'team' %}">Our Team</a>
+      <a href="{% url 'contact' %}">Contact Us</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="btn register-btn">Browse Profiles</a>
+      <a href="{% url 'profile' %}" class="btn login-btn">Your Profile</a>
+    </div>
+  </div>
+
+
+  <!-- ===============================
+       MAIN LAYOUT (Sidebar + Profiles)
+  ================================ -->
+  <div class="main-layout">
+
+    <!-- Sorting Sidebar -->
+<aside class="sort-sidebar">
+  <h3>Filter Profiles</h3>
+  <form id="filterForm" method="get" action="">
+    
+    <!-- Gender -->
+    <label for="gender">Gender</label>
+<select name="gender" class="filter-select">
+  <option value="">All</option>
+  <option value="M" {% if request.GET.gender == "M" %}selected{% endif %}>Male</option>
+  <option value="F" {% if request.GET.gender == "F" %}selected{% endif %}>Female</option>
+</select>
+
+
+
+    <!-- Age Range -->
+    <label>Age Range:</label>
+    <div class="age-range">
+      <input type="number" name="min_age" placeholder="Min" min="18" max="100" value="{{ request.GET.min_age }}">
+      <input type="number" name="max_age" placeholder="Max" min="18" max="100" value="{{ request.GET.max_age }}">
+    </div>
+
+    <!-- Education -->
+    <label for="education">Education:</label>
+    <select name="education" id="education">
+      <option value="">Any</option>
+      <option value="10th pass" {% if request.GET.education == "10th pass" %}selected{% endif %}>10th pass</option>
+      <option value="12th pass" {% if request.GET.education == "12th pass" %}selected{% endif %}>12th pass</option>
+      <option value="Diploma" {% if request.GET.education == "Diploma" %}selected{% endif %}>Diploma</option>
+      <option value="Graduate" {% if request.GET.education == "Graduate" %}selected{% endif %}>Graduate</option>
+      <option value="Post Graduate" {% if request.GET.education == "Post Graduate" %}selected{% endif %}>Post Graduate</option>
+      <option value="Specialization" {% if request.GET.education == "Specialization" %}selected{% endif %}>Specialization</option>
+      <option value="Doctor" {% if request.GET.education == "Doctor" %}selected{% endif %}>Doctor</option>
+      <option value="Engineer" {% if request.GET.education == "Engineer" %}selected{% endif %}>Engineer</option>
+      <option value="CA" {% if request.GET.education == "CA" %}selected{% endif %}>C.A.</option>
+      <option value="Computer" {% if request.GET.education == "Computer" %}selected{% endif %}>Computer</option>
+      <option value="Any other" {% if request.GET.education == "Any other" %}selected{% endif %}>Any other</option>
+    </select>
+
+    <button type="submit" class="btn filter-btn">Apply</button>
+    <a href="{% url 'logged' %}" class="btn reset-btn">Reset</a>
+  </form>
+</aside>
+
+
+
+    <!-- Profiles Section -->
+    <section class="profiles-container">
+      {% for profile in page_obj %}
+      <div class="profile-card">
+        <img src="{{ profile.passport_photo }}" alt="Passport Photo" class="thumb-photo">
+        
+        <div class="profile-info">
+          <p class="profile-line">
+            <span>{{ profile.your_name }} &nbsp;<strong>Mo.:</strong> {{ profile.your_mob }}</span>
+            <span><strong>Father:</strong> {{ profile.father_name }} &nbsp;<strong>Mo.:</strong> {{ profile.father_mob }}</span>
+            <span><strong>Mother:</strong> {{ profile.mother_name }} &nbsp;<strong>Mo.:</strong> {{ profile.mother_mob }}</span>
+          </p>
+
+          <p class="profile-line">
+            <span><strong>House:</strong> {{ profile.house }}, {{ profile.sqft }} Sq. ft, {{ profile.floors }} floor</span>
+            <span><strong>Vehicle:</strong> {{ profile.vehicles2 }} two wheeler, {{ profile.vehicles4 }} four wheeler</span>
+            <span><strong>Education:</strong> {{ profile.education }} ({{ profile.subject }})</span>
+          </p>
+
+          <p class="profile-line">
+            <span><strong>Age:</strong> {{ profile.age }}</span>
+            <span><strong>Birth:</strong> {{ profile.birthDate }}</span>
+            <span><strong>Time:</strong> {{ profile.birthTime }}</span>
+            <span><strong>Place:</strong> {{ profile.birthPlace }}</span>
+            <span><strong>Job/Business:</strong> {{ profile.jobType }}</span>
+          </p>
+
+          <p class="profile-line">
+            <span><strong>Color:</strong> {{ profile.skinColour }}</span>
+            <span><strong>Height:</strong> {{ profile.height }} ft</span>
+            <span><strong>Weight:</strong> {{ profile.weight }} kg</span>
+            <span><strong>Diseases:</strong> {{ profile.disease|default:"None" }}</span>
+            <span><strong>Income:</strong> {{ profile.personalIncome|default:"NA" }} lakhs</span>
+            <span><strong>Joint Income:</strong> {{ profile.jointIncome|default:"NA" }} lakhs</span>
+          </p>
+
+          <p><strong>Own Company:</strong> {{ profile.position }}, {{ profile.company }}, {{ profile.profAddress }}</p>
+
+          {% if profile.FatherPos and profile.FatherBusiness and profile.FatherBusinessAd %}
+          <p><strong>Father Company:</strong> {{ profile.FatherPos }}, {{ profile.FatherBusiness }}, {{ profile.FatherBusinessAd }}</p>
+          {% endif %}
+
+          {% if profile.BrotherPos and profile.BrotherBusiness and profile.BrotherBusinessAd %}
+          <p><strong>Brother Company:</strong> {{ profile.BrotherPos }}, {{ profile.BrotherBusiness }}, {{ profile.BrotherBusinessAd }}</p>
+          {% endif %}
+
+          <p><strong>Residence:</strong> {{ profile.address }}</p>
+
+          <p class="profile-line">
+            {% if profile.widow == 'yes' %}Widow, {% endif %}
+            {% if profile.nonVeg == 'yes' %}Non-Vegetarian, {% else %}Vegetarian, {% endif %}
+            {% if profile.drinks == 'yes' %}Drinker, {% else %}Non-Drinker, {% endif %}
+            {% if profile.smokes == 'yes' %}Smoker{% else %}Non-Smoker{% endif %}
+            <span><strong>Family:</strong></span>
+            <span>Brother: {{ profile.brother }}{% if profile.brother %}{% if profile.marriedb == "yes" %}, Married{% else %}, Unmarried{% endif %}{% endif %}</span>
+            <span>Sister: {{ profile.sister }}{% if profile.sister %}{% if profile.marrieds == "yes" %}, Married{% else %}, Unmarried{% endif %}{% endif %}</span>
+          </p>
+        </div>
+      </div>
+      {% empty %}
+      <p>No profiles found.</p>
+      {% endfor %}
+
+
+      <!-- Pagination -->
+      <div class="pagination">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}" class="btn">← Previous</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}" class="btn">Next →</a>
+        {% endif %}
+        <span class="page-info">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      </div>
+
+    </section>
+  </div>
+
+  <script src="{% static 'login/logged.js' %}"></script>
+
+</body>
+</html>

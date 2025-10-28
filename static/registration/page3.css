@@ -1,0 +1,171 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 96%;
+  max-width: 1540px;
+  margin: 1vh auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px 16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+header h2 {
+  margin: 0;
+  color: #003366;
+}
+
+#translateBtn {
+  background-color: #2b7cff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Form lines */
+.form-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+/* Bold questions */
+.bold-question {
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+/* Radio inputs normal weight */
+.form-line label input[type="radio"] + span {
+  font-weight: normal;
+}
+
+/* Containers for horizontal spacing between questions */
+.question-container-1, .question-container-2, .question-container-3, .question-container-4 {
+  display: flex;
+  align-items: center;
+}
+.question-container-1 {
+  margin-right: 238px;
+}
+
+.question-container-2 {
+  margin-right: 243px;
+}
+
+.question-container-3 {
+  margin-right: 337px;
+}
+
+.question-container-4 {
+  margin-right: 326px;
+}
+
+/* Inputs / selects / textareas */
+input, select, textarea {
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  padding: 6px 8px;
+  font-size: 1rem;
+}
+
+input[type="number"], select {
+  width: 120px;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+/* Checkbox/family section */
+.checkbox-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-line label {
+  font-weight: normal;
+}
+
+.checkbox-line input[type="number"] {
+  width: 80px;
+  min-width: 70px;
+  padding: 4px 6px;
+}
+
+/* Textarea labels */
+.textarea-line label {
+  width: 100%;
+}
+
+/* Buttons */
+.btn-area {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+#submitBtn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#submitBtn:hover {
+  background-color: #218838;
+}
+
+/* Large address input */
+#address {
+  width: 80%;
+}
+
+/* Advertisement box */
+.ad-box {
+  width: 28cm;
+  height: 4.2cm;
+  background: linear-gradient(90deg, #e6f0ff, #fafdff);
+  border: 2px dashed #99bbff;
+  margin: 25px auto 0 auto;
+  border-radius: 8px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#0043a9;
+  font-size: 1rem;
+  font-weight:600;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+

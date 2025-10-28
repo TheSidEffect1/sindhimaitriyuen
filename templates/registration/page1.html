@@ -1,0 +1,93 @@
+<!-- templates/registration/index.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Matrimony Registration - Step 1</title>
+<link rel="stylesheet" href="{% static 'registration/page1.css' %}">
+</head>
+<body>
+  {% csrf_token %}
+<div class="container">
+  <h2>Step 1: Basic Info</h2>
+
+  <form id="registrationForm" autocomplete="off" novalidate>
+    <div class="grid">
+      <!-- LEFT COLUMN -->
+      <div class="column">
+        <label class="field-label">Upload Passport Photo</label>
+        <input type="file" id="passportPhotoInput" accept="image/*" />
+        <div class="preview-frame passport-frame">
+          <img id="passportPreview" class="preview" alt="Passport preview" />
+        </div>
+
+        <label class="field-label">Email ID</label>
+        <input type="text" id="email" inputmode="email" placeholder="Enter Email ID" />
+
+        <label class="field-label">Aadhar No.</label>
+        <input type="text" id="aadhar" inputmode="numeric" maxlength="14" placeholder="XXXX XXXX XXXX" />
+
+        <label class="field-label">Blood Group</label>
+        <input type="text" id="bloodGroup" placeholder="e.g. O+" />
+
+        <label class="field-label">Gender</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="M" /> Male</label>
+          <label><input type="radio" name="gender" value="F" /> Female</label>
+        </div>
+      </div>
+
+      <!-- MIDDLE COLUMN -->
+      <div class="column">
+        <input type="text" id="yourName" placeholder="Your Name" />
+        <input type="text" id="yourMob" inputmode="numeric" maxlength="11" placeholder="Your Mobile Number" />
+        <input type="text" id="fatherName" placeholder="Father's Name" />
+        <input type="text" id="fatherMob" inputmode="numeric" maxlength="11" placeholder="Father's Mobile Number" />
+        <input type="text" id="motherName" placeholder="Mother's Name" />
+        <input type="text" id="motherMob" inputmode="numeric" maxlength="11" placeholder="Mother's Mobile Number" />
+
+        <div class="row">
+          <input type="text" id="city" placeholder="City" />
+          <input type="text" id="state" placeholder="State" />
+        </div>
+
+        <input type="password" id="password" placeholder="Password" />
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" />
+
+        <textarea id="partnerChoice" placeholder="Describe your choice of partner..."></textarea>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="column">
+        <label class="field-label">Upload Full Photo</label>
+        <input type="file" id="fullPhotoInput" accept="image/*" />
+        <div class="preview-frame full-frame">
+          <img id="fullPreview" class="preview" alt="Full photo preview" />
+        </div>
+
+        <div id="otpSection">
+          <button type="button" id="sendOtp" class="btn">Send OTP</button>
+          <div id="otpVerifySection" class="hidden">
+            <input type="text" id="otpInput" inputmode="numeric" maxlength="6" placeholder="Enter OTP" />
+            <button type="button" id="verifyOtp" class="btn">Verify OTP</button>
+          </div>
+        </div>
+
+        <button type="button" id="nextBtn" class="btn primary" disabled>Next →</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Advertisement Section -->
+<div class="ad-section">
+  <p>Your Ad Here — 5×30 cm Banner</p>
+</div>
+
+<script src="{% static 'registration/page1.js' %}">
+  const csrftoken = '{{ csrf_token }}';
+</script>
+</body>
+</html>

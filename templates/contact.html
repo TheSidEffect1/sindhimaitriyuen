@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sindhi Maitriyuen</title>
+  <link rel="stylesheet" href="{% static 'contact.css' %}">
+  <link rel="stylesheet" href="{% static 'default.css' %}">
+</head>
+<body>
+
+  <!-- Navbar -->
+<div class="navbar">
+  <div class="nav-left">SindhiMaitriyen.com</div>
+  
+  <div class="nav-center">
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'services' %}">Services</a>
+    <a href="{% url 'sindhisoc' %}">Sindhi Society</a>
+    <a href="{% url 'team' %}">Our Team</a>
+    <a href="#">Contact Us</a>
+  </div>
+
+    <div class="nav-right">
+    {% if request.session.user_id %}
+      <a href="{% url 'logged' %}" class="btn register-btn">Browse Profiles</a>
+      <a href="{% url 'profile' %}" class="btn login-btn">Your Profile</a>
+    {% else %}
+      <a href="{% url 'page1' %}" class="btn register-btn">Register Now</a>
+      <a href="{% url 'login' %}" class="btn login-btn">Login</a>
+    {% endif %}
+  </div>
+</div>
+
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <img src="{% static 'photos/logo.png' %}" alt="logo" class="logo">
+    <img src="{% static 'photos/address.png' %}" alt="address" class="address">
+    <img src="{% static 'photos/sindhu.jpg' %}" alt="logo" class="sindhu">
+    <div class="text">
+      <p>Organised by:</p>
+      <h2>Sindhu Muhinji Jijal, Indore</h2><p class="lh">&nbsp;</p>
+      <div class="wrapped-text">
+        <p>“Verma Hall” Devshree Talkies Complex, Loha Mandi Road, Indore 452 012</p>
+        <p>“वर्मा हॉल” देवश्री टॉकीज काम्प्लेक्स , लोहा मण्डी रोड़, इन्दौर 452 012,  Mob  96857 40080</p>
+        <p>Webiste Developer: siddharthkodwani33@gmail.com</p>
+        <p>वेबसाइट डेवलपर: siddharthkodwani33@gmail.com</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ad Box -->
+  <footer class="ad-box">
+    <p>Advertisement Space (4 x 30 cm)</p>
+  </footer>
+
+</body>
+</html>

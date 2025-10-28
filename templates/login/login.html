@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Sindhi Maitriyuen</title>
+  <link rel="stylesheet" href="{% static 'login/login.css' %}">
+  <link rel="stylesheet" href="{% static 'default.css' %}">
+</head>
+<body>
+  <!-- Navbar -->
+<div class="navbar">
+  <div class="nav-left">SindhiMaitriyen.com</div>
+  
+  <div class="nav-center">
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'services' %}">Services</a>
+    <a href="{% url 'sindhisoc' %}">Sindhi Society</a>
+    <a href="{% url 'team' %}">Our Team</a>
+    <a href="{% url 'contact' %}">Contact Us</a>
+  </div>
+
+  <div class="nav-right">
+    <a href="{% url 'page1' %}" class="btn register-btn">Register Now</a>
+    <a href="#" class="btn login-btn">Login</a>
+  </div>
+</div>
+
+  <div class="login-container">
+    <h2>Member Login</h2><h1>SindhiMaitriyen.com</h1><br>
+    <form id="loginForm">
+      <label for="mob">Mobile Number:</label>
+      <input type="text" id="mob" name="mob" placeholder="Enter your mobile number" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required><br>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p id="error-message"></p>
+  </div>
+
+    <!-- Ad Box -->
+  <footer class="ad-box">
+    <p>Advertisement Space (4 x 30 cm)</p>
+  </footer>
+
+  <script src="{% static 'login/login.js' %}"></script>
+</body>
+</html>

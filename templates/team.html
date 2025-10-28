@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sindhi Maitriyuen</title>
+  <link rel="stylesheet" href="{% static 'team.css' %}">
+  <link rel="stylesheet" href="{% static 'default.css' %}">
+</head>
+<body>
+
+  <!-- Navbar -->
+<div class="navbar">
+  <div class="nav-left">SindhiMaitriyen.com</div>
+  
+  <div class="nav-center">
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'services' %}">Services</a>
+    <a href="{% url 'sindhisoc' %}">Sindhi Society</a>
+    <a href="#">Our Team</a>
+    <a href="{% url 'contact' %}">Contact Us</a>
+  </div>
+
+  <div class="nav-right">
+    {% if request.session.user_id %}
+      <a href="{% url 'logged' %}" class="btn register-btn">Browse Profiles</a>
+      <a href="{% url 'profile' %}" class="btn login-btn">Your Profile</a>
+    {% else %}
+      <a href="{% url 'page1' %}" class="btn register-btn">Register Now</a>
+      <a href="{% url 'login' %}" class="btn login-btn">Login</a>
+    {% endif %}
+  </div>
+</div>
+
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h2>Bureau Team</h2>
+    <p>Naresh Jadavani, Suresh Wadhwa, Vasdev Ghidwani, Govind Rupani, Hiranand Ahuja, Anil Karmchandani, Amarlal Punjabi, Nandlal Jamwani</p>
+    <h2>Panch Sunvai Team</h2>
+    <table>
+      <tr>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+      </tr>
+      <tr>
+        <td>Kamal Israni</td>
+        <td>Reshma Bhatia</td>
+        <td>Chanda Khatri</td>
+        <td>Puran Behrani</td>
+        <td>Amla Sharma</td>
+      </tr>
+      <tr>
+        <td>Aishwarya Udasi</td>
+        <td>Priya Rohida</td>
+        <td>Nikhil Basantani</td>
+        <td>Lalit Belani</td>
+        <td>Kanhaiyalal Manghani</td>
+      </tr>
+      <tr>
+        <td>Draupadi Rizhwani</td>
+        <td>Prem Savlani</td>
+        <td>Radha Tirthani</td>
+        <td>Kiran Chawala</td>
+        <td>Narendra Ahuja</td>
+      </tr>
+      <tr>
+        <td>Girish Bhagwano</td>
+        <td>Hemant Ahuja</td>
+        <td>Jagdish Ferwani</td>
+        <td>Manohar Motwani</td>
+        <td>Chavikant Ramnani</td>
+      </tr>  
+    </table>
+    <h2>Vishesh Team</h2>
+    <p>Kishore Kodwani, Manohar Mamtani, Suresh Ferwani, Sanjay Verma, Gopaldas Pariyani, Jayshri Virani, Dr. Madhav Hasani, Dinesh Rawat, Jayesh Gurnani, Deepika Chotwani, Pankhudi Masand, Ramesh Mulchandani, Shrichand Bhatia</p>
+    <h2>Jijal Team</h2>
+    <p>Rohit Nagdev, Dilip Mata, Anil Fatehchandani, Ghanshyam Ahuja, Namosh Talreja, Rajkumar Gulani, Shankar Malkani, Dev Lalwani, Kartik Israni, Kishore Pariyani, Santosh Motlani, Trilok Gulani, Jagdish Fatehchandani, Shiv Jagwani, Honey Punjabi, Dharmendra Bhatia, Dharmapal Gangwani</p>
+  </section>
+
+  <!-- Ad Box -->
+  <footer class="ad-box">
+    <p>Advertisement Space (4 x 30 cm)</p>
+  </footer>
+
+</body>
+</html>

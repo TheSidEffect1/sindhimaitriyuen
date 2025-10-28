@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Hero Section */
+.hero-img {
+  width: 73%;
+  height: 75%;
+  display: block;
+  padding-top: 75px;
+  margin: 0 auto 37px;
+  border-radius: 10px;
+}

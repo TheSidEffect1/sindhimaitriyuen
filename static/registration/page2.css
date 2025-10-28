@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  width: 96%;
+  max-width: 1540px;
+  margin: 1vh auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 28px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #003366;
+}
+
+#translateBtn {
+  background-color: #2b7cff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 7px;
+  font-size: 0.95rem;
+}
+
+label {
+  color: #000;
+  white-space: nowrap;
+}
+
+input, select {
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  padding: 6px 8px;
+  font-size: 0.96rem;
+  height: 23px;
+  width: 200px;
+}
+
+input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+.btn-area {
+  text-align: right;
+  margin-top: 8px;
+}
+
+#submitBtn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 28px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#submitBtn:hover {
+  background-color: #218838;
+}
+
+#house, #education {
+  height: 35px;
+}
+
+.ad-box {
+  width: 28cm;
+  height: 4.2cm;
+  background: linear-gradient(90deg, #e6f0ff, #fafdff);
+  border: 2px dashed #99bbff;
+  margin: 25px auto 0 auto;
+  border-radius: 8px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#0043a9;
+  font-size: 1rem;
+  font-weight:600;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}

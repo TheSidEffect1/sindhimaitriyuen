@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.address {
+  width: 27%;
+  margin-left: 65%;
+  margin-top: -12%;
+  height: auto;
+  transform: rotate(90deg) translateY(-50%);
+}
+
+.logo {
+  width: 20%;
+  height: auto;
+  margin-left: 40%;
+  margin-top: 10%;
+}
+
+.sindhu {
+  width: 5%;
+  height: auto;
+  margin-left: 30%;
+}
+
+.text {
+  text-align: center;
+  margin-top: -6.5%;
+  line-height: 1.3;
+}
+
+.wrapped-text {
+  font-size: 13px;
+}
+
+.lh {
+  line-height: 0.5;
+}

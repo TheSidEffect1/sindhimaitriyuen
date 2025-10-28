@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrimony Registration - Step 3</title>
+  <link rel="stylesheet" href="{% static 'registration/page3.css' %}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2>Step 3: Family Profile & Preferences<br>&nbsp;</h2>
+      <button id="translateBtn">Translate to Hindi</button>
+    </header>
+
+    <form id="familyForm">
+      {% csrf_token %}
+      <div class="form-section">
+
+        <!-- Residence -->
+        <div class="form-line">
+          <label for="address">Residence Address:</label>
+          <input type="text" id="address" placeholder="Full home address" required>
+        </div>
+
+        <!-- Family Members -->
+        <div class="form-line checkbox-line">
+          <label for="members">Family Members:</label>
+          <input type="number" id="members" placeholder="Count" required>
+
+          <label>Grandfather:
+            <input type="checkbox" id="grandfather">
+          </label>
+
+          <label>Grandmother:
+            <input type="checkbox" id="grandmother">
+          </label>
+
+          <label>Father:
+            <input type="checkbox" id="father">
+          </label>
+          
+          <label>Mother:
+            <input type="checkbox" id="mother">
+          </label>
+
+          <label>Brother:
+            <input type="number" id="brother" placeholder="Count">
+          </label>
+
+          <label for="marriedb">Married or Unmarried?</label>
+          <select id="marriedb">
+            <option value="">Select</option>
+            <option value="1">Married</option>
+            <option value="0">Unmarried</option>
+          </select>
+
+          <label>Sister:
+            <input type="number" id="sister" placeholder="Count">
+          </label>
+
+          <label for="marrieds">Married or Unmarried?</label>
+          <select id="marrieds">
+            <option value="">Select</option>
+            <option value="1">Married</option>
+            <option value="0">Unmarried</option>
+          </select>
+
+        </div>
+
+        <!-- Sindh / Nukha / Aakay -->
+        <div class="form-line">
+          <label for="sindh">Sindh:</label>
+          <select id="sindh" required>
+            <option value="">Select</option>
+            <option>Sakkar</option>
+            <option>Shikharpur</option>
+            <option>Larkana</option>
+            <option>Hyderabad</option>
+            <option>Dadu</option>
+            <option>Kandhkot</option>
+            <option>Jekmabad</option>
+            <option>Deherki</option>
+            <option>Tharparkar</option>
+            <option>Royedi</option>
+            <option>Ghotki</option>
+            <option>Kashmoro</option>
+            <option>Jamshoro</option>
+            <option>Sangar</option>
+            <option>Kherpur</option>
+            <option>Neerpur</option>
+            <option>Tando</option>
+            <option>Bandi</option>
+            <option>Neerpurkhas</option>
+            <option>Umarkot</option>
+            <option>Other</option>
+          </select>
+
+          <label for="nukha">Nukha:</label>
+          <input type="text" id="nukha" placeholder="Enter Nukha">
+
+          <label for="aakay">Aakay:</label>
+          <input type="text" id="aakay" placeholder="Enter Aakay">
+        </div>
+
+        <!-- Business -->
+        <div class="form-line">
+          <label for="FatherBusiness">Father Company (M/s):</label>
+          <input type="text" id="FatherBusiness" placeholder="optional">
+
+          <label for="FatherPos">Position:</label>
+          <input type="text" id="FatherPos" placeholder="optional">
+
+          <label for="FatherBusinessAd">Address:</label>
+          <input type="text" id="FatherBusinessAd" placeholder="optional">
+        </div>
+
+        <div class="form-line">
+          <label for="BrotherBusiness">Brother Company (M/s):</label>
+          <input type="text" id="BrotherBusiness" placeholder="optional">
+
+          <label for="BrotherPos">Position:</label>
+          <input type="text" id="BrotherPos" placeholder="optional">
+
+          <label for="BrotherBusinessAd">Address:</label>
+          <input type="text" id="BrotherBusinessAd" placeholder="optional">
+        </div><br>
+
+        <!-- Textareas -->
+        <div class="form-line textarea-line">
+          <label for="interests">Interests & Achievements of Mother/Father:</label>
+          <textarea id="interests" rows="2" placeholder="Describe briefly"></textarea>
+        </div>
+
+        <div class="form-line textarea-line">
+          <label for="otherInfo">Any other information / Questions:</label>
+          <textarea id="otherInfo" rows="2" placeholder="Optional additional details"></textarea>
+        </div>
+
+        <!-- Radio groups inline -->
+        <div class="form-line">
+          <span class="question-container-1">
+            <label class="bold-question">Are you a widow/divorcee?</label>
+            <label><input type="radio" name="widow" value="yes" required><span> Yes</span></label>
+            <label><input type="radio" name="widow" value="no"><span> No</span></label>
+          </span>
+
+          <span class="question-container-1">
+            <label class="bold-question">Will you accept a widow/divorcee?</label>
+            <label><input type="radio" name="widowAccept" value="yes" required><span> Yes</span></label>
+            <label><input type="radio" name="widowAccept" value="no"><span> No</span></label>
+            <label><input type="radio" name="widowAccept" value="any"><span> Any</span></label>
+          </span>
+        </div>
+
+        <div class="form-line">
+          <span class="question-container-2">
+            <label class="bold-question">Are you a non-vegetarian?</label>
+            <label><input type="radio" name="nonVeg" value="yes" required><span> Yes</span></label>
+            <label><input type="radio" name="nonVeg" value="no"><span> No</span></label>
+          </span>
+
+          <span class="question-container-2">
+            <label class="bold-question">Will you accept a non-vegetarian?</label>
+            <label><input type="radio" name="nonVegAccept" value="yes" required><span> Yes</span></label>
+            <label><input type="radio" name="nonVegAccept" value="no"><span> No</span></label>
+            <label><input type="radio" name="nonVegAccept" value="any"><span> Any</span></label>
+          </span>
+        </div>
+
+        <div class="form-line">
+          <span class="question-container-3">
+            <label class="bold-question">Do you drink?</label>
+            <label><input type="radio" name="drinks" value="yes" required><span> Yes</span></label>
+            <label><input type="radio" name="drinks" value="no"><span> No</span></label>
+          </span>
+
+          <span class="question-container-3">
+            <label class="bold-question">Will you accept someone who drinks?</label>
+            <label><input type="radio" name="drinksAccept" value="yes" required><span> Yes</span></label>
+            <label><input type="radio" name="drinksAccept" value="no"><span> No</span></label>
+            <label><input type="radio" name="drinksAccept" value="any"><span> Any</span></label>
+          </span>
+        </div>
+
+        <div class="form-line">
+          <span class="question-container-4">
+            <label class="bold-question">Do you smoke?</label>
+            <label><input type="radio" name="smokes" value="yes" required><span> Yes</span></label>
+            <label><input type="radio" name="smokes" value="no"><span> No</span></label>
+          </span>
+
+          <span class="question-container-4">
+            <label class="bold-question">Will you accept someone who smokes?</label>
+            <label><input type="radio" name="smokesAccept" value="yes" required><span> Yes</span></label>
+            <label><input type="radio" name="smokesAccept" value="no"><span> No</span></label>
+            <label><input type="radio" name="smokesAccept" value="any"><span> Any</span></label>
+          </span>
+        </div>
+
+        <!-- Submit -->
+        <div class="btn-area">
+          <button type="submit" id="submitBtn">Submit</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+  <div class="ad-box">
+    <p>Advertisement Space (5cm x 30cm)</p>
+  </div>
+
+  <script src="{% static 'registration/page3.js' %}" defer></script>
+</body>
+</html>

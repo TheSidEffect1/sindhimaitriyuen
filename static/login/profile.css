@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Container */
+.profile-container {
+  max-width: 900px;
+  margin: 120px auto 60px auto;
+  padding: 20px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: #222;
+}
+
+/* Headings */
+.profile-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #1e293b;
+}
+
+/* Profile Card */
+.profile-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  transition: box-shadow 0.2s ease;
+}
+
+.profile-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Passport Photo */
+.thumb-photo {
+  display: block;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 25px auto;
+  border: 3px solid #ddd;
+}
+
+/* Section Titles */
+.profile-section {
+  margin-bottom: 40px;
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+}
+
+.profile-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.profile-section h3 {
+  font-size: 1.2rem;
+  color: #334155;
+  margin-bottom: 15px;
+  border-left: 4px solid #2563eb;
+  padding-left: 10px;
+}
+
+/* Inputs and Fields */
+.profile-section p {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.profile-section strong {
+  flex: 0 0 180px;
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.profile-section input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #fafafa;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.profile-section input:focus {
+  border-color: #2563eb;
+  background-color: #fff;
+  outline: none;
+}
+
+/* Save Button */
+.save-btn {
+  display: block;
+  background: #2563eb;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  margin: 10px auto;
+}
+
+.save-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+  .profile-container {
+    padding: 10px;
+  }
+
+  .profile-card {
+    padding: 20px;
+  }
+
+  .profile-section strong {
+    flex: 100%;
+    margin-bottom: 6px;
+  }
+
+  .profile-section input {
+    flex: 100%;
+  }
+
+  .thumb-photo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Logout Button */
+.logout-btn {
+  display: block;
+  background: #ef4444;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  margin: 10px auto;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}

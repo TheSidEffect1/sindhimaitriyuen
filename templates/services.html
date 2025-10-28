@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sindhi Maitriyuen</title>
+  <link rel="stylesheet" href="{% static 'services.css' %}">
+  <link rel="stylesheet" href="{% static 'default.css' %}">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-left">SindhiMaitriyen.com</div>
+
+    <div class="nav-center">
+      <a href="{% url 'index' %}">Home</a>
+      <a href="#">Services</a>
+      <a href="{% url 'sindhisoc' %}">Sindhi Society</a>
+      <a href="{% url 'team' %}">Our Team</a>
+      <a href="{% url 'contact' %}">Contact Us</a>
+    </div>
+
+    <div class="nav-right">
+    {% if request.session.user_id %}
+      <a href="{% url 'logged' %}" class="btn register-btn">Browse Profiles</a>
+      <a href="{% url 'profile' %}" class="btn login-btn">Your Profile</a>
+    {% else %}
+      <a href="{% url 'page1' %}" class="btn register-btn">Register Now</a>
+      <a href="{% url 'login' %}" class="btn login-btn">Login</a>
+    {% endif %}
+  </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="content">
+      <div class="left-box">
+        <h2>Sindhi Maitriyuen.Com</h2><br>
+        <p>
+          विवाह योग्य वर-वधु की बायोडाटा वेब साइड पर निःशुक डाउनलोड कर सकते है। इस सेवा में दोनों पक्षो द्वारा दि गयी जानकारी को आप स्वयं को तहकीकात करनी होगी। समाज की ज़िम्मेदारी अथवा मध्यस्थता भूमिका नहीं रहेगी। आयु/शिक्षा/आमदनी/शहर आधारित वर वधु का बायोडाटा सर्च करने की व्यवस्था दी जा रही है। रिश्ता तय करने के लिये आपको स्वयं संपर्क करना होगा।
+          <br><br>
+          Biodata of eligible bride and groom can be downloaded for free from the website. In this service you will have to investigate the information given by both the parties yourself. Society will not have any responsibility or mediation role. A Facility is being provided to search the biodata of bride & groom based on age/education/income/etc. You will have to contact yourself to fix the relationship.
+        </p>
+      </div>
+
+      <div class="right-box">
+        <h3>सिन्धी माईट्रियूं मेलाप ब्यूरो :</h3><br>
+        <p>
+           विगत दो वर्षों में सिन्धी पंच मध्यस्थता व विधिक परामर्श केंद्र द्वारा 200 से अधिक पति-पत्नी विवादों के निराकरण अनुभव आधारित सिन्धी माईट्रियूं मेलाप ब्यूरों स्थापित किया गया है। रिश्ता तय करने में परिवार के सभी सदस्यों की भागीदारी व पारदर्शिता आवश्यक है। इसलिए आय-व्यय (बैंक स्टेटमेंट), आर्थिक (बैलेन्स शीट), परिवार (संयुक्त फोटो) अनिवार्य किया गया है। दोनों पक्षों की ऑफिस में निःशुल्क मुलाक़ात व वर-वधु की आपसी चर्चा हेतु प्रथक कक्ष स्थापित किया गया है। दोनों परिवारों की मुलाक़ात से पूर्व आवासिय व व्यवसायिक 1-2 मिनट का वीडियो एक-दूसरे को देना अनिवार्य किया गया है। प्रति परिवार को मेचिंग बायोडाटा डाक द्वारा एक वर्ष में चार बार भेजने की व्यवस्था रहेगी। इन सेवाओं व डाक शुल्क के 2000 रूपये वार्षिक शुल्क देय होगा।
+          <br><br>
+          In the last two years, Sindhi Panch Madhysthata & Vidhik Paramarsh Kendra has been established based on the experience of resolving more than 200 husband – wife disputes by Sindhi Panch Mediation & Legal Consultancy Center. Participation & transparency of all the family member in essential in deciding the relationship. Therefore, Income (Bank Statement), Financial (Balance Sheet), Family (a group family photo) have been made mandatory.
+A saperate room has been setup for free meeting of both the parties in the office and for mutual decision between the bride & the groom.
+Before the meeting of both the families it has made mandatory to give each other a 2 minutes video of the residential & business. 
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ad Box -->
+  <footer class="ad-box">
+    <p>Advertisement Space (4 x 30 cm)</p>
+  </footer>
+
+</body>
+</html>

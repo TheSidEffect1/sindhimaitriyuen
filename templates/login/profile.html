@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Profile - Sindhi Maitriyuen</title>
+  <link rel="stylesheet" href="{% static 'default.css' %}">
+  <link rel="stylesheet" href="{% static 'login/profile.css' %}">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="nav-left">SindhiMaitriyen.com</div>
+  <div class="nav-center">
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'services' %}">Services</a>
+    <a href="{% url 'sindhisoc' %}">Sindhi Society</a>
+    <a href="{% url 'team' %}">Our Team</a>
+    <a href="{% url 'contact' %}">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="{% url 'logged' %}" class="btn register-btn">Browse Profiles</a>
+    <a href="{% url 'profile' %}" class="btn login-btn">Your Profile</a>
+  </div>
+</div>
+
+<div class="profile-container">
+  <h2>Your Profile</h2>
+
+  <div class="profile-card">
+    <img src="{{ profile.passport_photo|default:'#' }}" alt="Passport Photo" class="thumb-photo">
+
+    <form id="editProfileForm">
+      <div class="profile-section">
+        <h3>Personal Information</h3>
+        <p><strong>Name:</strong> <input type="text" name="your_name" value="{{ profile.your_name }}"></p>
+        <p><strong>Mobile:</strong> <input type="text" name="your_mob" value="{{ profile.your_mob }}"></p>
+        <p><strong>Email:</strong> <input type="text" name="email" value="{{ profile.email|default:'' }}"></p>
+        <p><strong>Gender:</strong> <input type="text" name="gender" value="{{ profile.gender|default:'' }}"></p>
+        <p><strong>City:</strong> <input type="text" name="city" value="{{ profile.city|default:'' }}"></p>
+        <p><strong>State:</strong> <input type="text" name="state" value="{{ profile.state|default:'' }}"></p>
+      </div>
+
+      <div class="profile-section">
+        <h3>Family Information</h3>
+        <p><strong>Father:</strong> <input type="text" name="father_name" value="{{ profile.father_name|default:'' }}"></p>
+        <p><strong>Father Mobile:</strong> <input type="text" name="father_mob" value="{{ profile.father_mob|default:'' }}"></p>
+        <p><strong>Mother:</strong> <input type="text" name="mother_name" value="{{ profile.mother_name|default:'' }}"></p>
+        <p><strong>Mother Mobile:</strong> <input type="text" name="mother_mob" value="{{ profile.mother_mob|default:'' }}"></p>
+        <p><strong>Address:</strong> <input type="text" name="address" value="{{ profile.address|default:'' }}"></p>
+      </div>
+
+      <div class="profile-section">
+        <h3>Education & Work</h3>
+        <p><strong>Education:</strong> <input type="text" name="education" value="{{ profile.education|default:'' }}"></p>
+        <p><strong>Subject:</strong> <input type="text" name="subject" value="{{ profile.subject|default:'' }}"></p>
+        <p><strong>Profession:</strong> <input type="text" name="profession" value="{{ profile.profession|default:'' }}"></p>
+        <p><strong>Company:</strong> <input type="text" name="company" value="{{ profile.company|default:'' }}"></p>
+        <p><strong>Position:</strong> <input type="text" name="position" value="{{ profile.position|default:'' }}"></p>
+        <p><strong>Professional Address:</strong> <input type="text" name="profAddress" value="{{ profile.profAddress|default:'' }}"></p>
+      </div>
+
+      <div class="profile-section">
+        <h3>Additional Details</h3>
+        <p><strong>Height:</strong> <input type="text" name="height" value="{{ profile.height|default:'' }}"></p>
+        <p><strong>Weight:</strong> <input type="text" name="weight" value="{{ profile.weight|default:'' }}"></p>
+        <p><strong>Skin Colour:</strong> <input type="text" name="skinColour" value="{{ profile.skinColour|default:'' }}"></p>
+        <p><strong>Income:</strong> <input type="text" name="personalIncome" value="{{ profile.personalIncome|default:'' }}"></p>
+        <p><strong>Joint Income:</strong> <input type="text" name="jointIncome" value="{{ profile.jointIncome|default:'' }}"></p>
+        <p><strong>Diseases:</strong> <input type="text" name="diseases" value="{{ profile.diseases|default:'' }}"></p>
+        <p><strong>Job Type:</strong> <input type="text" name="jobType" value="{{ profile.jobType|default:'' }}"></p>
+      </div>
+
+      <button type="submit" class="btn save-btn">Save Changes</button>
+      <button type="button" class="btn logout-btn" onclick="window.location.href='{% url 'logout' %}'">Logout</button>
+
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'login/profile.js' %}"></script>
+</body>
+</html>

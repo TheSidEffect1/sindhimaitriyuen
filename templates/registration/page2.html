@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrimony Registration - Step 2</title>
+  <link rel="stylesheet" href="{% static 'registration/page2.css' %}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2>Step 2: Personal Profile<br>&nbsp;</h2>
+      <button type="button" id="translateBtn">Translate to Hindi</button>
+    </header>
+
+    <form id="partnerForm">
+      {% csrf_token %}
+      <div class="form-section">
+
+        <!-- Step 1 repeated fields (do not store) -->
+        <div class="form-line">
+          <label for="name">Name:</label>
+          <input type="text" id="name" placeholder="Enter full name" required>
+          <label for="mobile">Mob:</label>
+          <input type="number" id="mobile" placeholder="10-digit number" required>
+        </div>
+
+        <div class="form-line">
+          <label for="fatherName">Father:</label>
+          <input type="text" id="fatherName" placeholder="Father's name" required>
+          <label for="fatherMob">Mob:</label>
+          <input type="number" id="fatherMob" placeholder="10-digit number" required>
+        </div>
+
+        <div class="form-line">
+          <label for="motherName">Mother:</label>
+          <input type="text" id="motherName" placeholder="Mother's name" required>
+          <label for="motherMob">Mob:</label>
+          <input type="number" id="motherMob" placeholder="10-digit number" required>
+        </div>
+
+        <!-- Step 2 fields -->
+        <div class="form-line">
+          <label for="house">House:</label>
+          <select id="house" required>
+            <option value="" disabled selected>Select</option>
+            <option value="own" data-en="Own" data-hi="स्वयम्">Own</option>
+            <option value="rent" data-en="Rent" data-hi="किराय">Rent</option>
+          </select>
+          <label for="sqft">Sq. ft:</label>
+          <input type="number" id="sqft" placeholder="Area in sq. ft" required>
+          <label for="floors">Floors:</label>
+          <input type="number" id="floors" placeholder="" required>
+        </div>
+
+        <div class="form-line">
+          <label for="vehicles"><strong>Vehicles:</strong></label>
+          <label for="vehicles2">2 wheelers:</label>
+          <input type="number" id="vehicles2" placeholder="Count" required>
+          <label for="vehicles4">4 wheelers:</label>
+          <input type="number" id="vehicles4" placeholder="Count" required>
+        </div>
+
+        <div class="form-line">
+          <label for="education">Education:</label>
+          <select id="education" required>
+            <option value="" disabled selected>Select</option>
+            <option value="10th pass">10th pass</option>
+            <option value="12th pass">12th pass</option>
+            <option value="Diploma">Diploma</option>
+            <option value="Graduate">Graduate</option>
+            <option value="Post Graduate">Post Graduate</option>
+            <option value="Specialization">Specialization</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Engineer">Engineer</option>
+            <option value="CA">C.A.</option>
+            <option value="Computer">Computer</option>
+            <option value="Any other">Any other</option>
+          </select>
+
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" placeholder="Main subject" required>
+
+          <label for="jobType">Job/Business:</label>
+          <input type="text" id="jobType" placeholder="Your occupation" required>
+        </div>
+
+        <div class="form-line">
+          <label for="age">Age:</label>
+          <input type="number" id="age" placeholder="In years" required>
+          <label for="birthDate">Birth Date:</label>
+          <input type="date" id="birthDate" required>
+          <label for="birthTime">Birth Time:</label>
+          <input type="time" id="birthTime" required>
+          <label for="birthPlace">Birth Place:</label>
+          <input type="text" id="birthPlace" placeholder="City, State" required>
+        </div>
+
+        <div class="form-line">
+          <label for="skinColour">Skin Colour:</label>
+          <input type="text" id="skinColour" placeholder="Fair/Medium/Dark" step="any" required>
+          <label for="height">Height:</label>
+          <input type="number" id="height" placeholder="In feet" step="any" required>
+          <label for="weight">Weight:</label>
+          <input type="number" id="weight" placeholder="In kg" step="any" required>
+          <label for="diseases">Diseases:</label>
+          <input type="text" id="diseases" placeholder="If any" step="any">
+        </div>
+
+        <div class="form-line">
+          <label for="personalIncome">Personal Income:</label>
+          <input type="number" id="personalIncome" placeholder="In LAKHS" step="any" required>
+          <label for="jointIncome">Joint Income:</label>
+          <input type="number" id="jointIncome" placeholder="in LAKHS" step="any" required>
+        </div>
+
+        <div class="form-line">
+          <label for="company">Company:</label>
+          <input type="text" id="company" placeholder="Company name" required>
+          <label for="position">Position:</label>
+          <input type="text" id="position" placeholder="Your position" required>
+        </div>
+
+        <div class="form-line">
+          <label for="profession">Profession:</label>
+          <input type="text" id="profession" placeholder="Profession type" required>
+          <label for="profAddress">Professional Address:</label>
+          <input type="text" id="profAddress" placeholder="Office address" style="width: 340px;" required>
+        </div>
+
+        <div class="btn-area">
+          <button type="submit" id="submitBtn">Submit</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+  <div class="ad-box">
+    <p>Advertisement Space (5cm x 30cm)</p>
+  </div>
+
+ 
+  <script src="{% static 'registration/page2.js' %}" defer>
+      const csrftoken = '{{ csrf_token }}';
+  </script>
+</body>
+</html>
