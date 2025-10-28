@@ -29,9 +29,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'sindhimaitriyuen.onrender.com',
-    '.onrender.com',
-    'sindhimaitriyuen.com',
     'www.sindhimaitriyuen.com',
+    'sindhimaitriyuen.com',
+    '.onrender.com',
+    '127.0.0.1',
+    'localhost',
 ]
 
 
