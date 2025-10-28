@@ -1,0 +1,207 @@
+/* -------------------------------
+   General Page Layout
+--------------------------------*/
+html, body {
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body {
+  margin-top: 80px; /* space for fixed navbar */
+  background-color: #f4f6fa;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* -------------------------------
+   Main Layout (Sidebar + Profiles)
+--------------------------------*/
+.main-layout {
+  display: flex;
+  gap: 30px;
+  max-width: 95%;
+  margin: 30px auto;
+  align-items: flex-start;
+}
+
+/* -------------------------------
+   Sorting Sidebar
+--------------------------------*/
+.sort-sidebar {
+  flex: 0 0 230px;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  height: fit-content;
+}
+
+.sort-sidebar h3 {
+  font-size: 1.1rem;
+  color: #2b4d9e;
+  margin-bottom: 15px;
+}
+
+.sort-sidebar label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.sort-sidebar select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.filter-group {
+  margin-top: 15px;
+}
+
+.filter-btn {
+  background-color: #2b4d9e;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background-color: #24417f;
+}
+
+/* -------------------------------
+   Profiles Container
+--------------------------------*/
+.profiles-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* -------------------------------
+   Profile Card
+--------------------------------*/
+.profile-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 25px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #fafafa;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+/* Thumbnail Photo */
+.thumb-photo {
+  width: 110px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  flex-shrink: 0;
+}
+
+/* Profile Info */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.profile-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 15px;
+}
+
+.profile-line span {
+  display: inline-block;
+  min-width: max-content;
+  font-size: 0.95rem;
+}
+
+.profile-info strong {
+  color: #2b4d9e;
+  font-weight: 600;
+}
+
+/* -------------------------------
+   Pagination
+--------------------------------*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.pagination .btn {
+  padding: 8px 16px;
+  background-color: #2b4d9e;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.pagination .btn:hover {
+  background-color: #24417f;
+}
+
+.page-info {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* -------------------------------
+   Responsive Design
+--------------------------------*/
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .sort-sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .thumb-photo {
+    width: 130px;
+    height: 140px;
+  }
+
+  .profile-line {
+    justify-content: center;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
