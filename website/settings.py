@@ -19,9 +19,9 @@ SECRET_KEY = 'django-insecure-!e*7asa9lcm&dc&gia%qg$d6%khcz-f1k(8fe=$ax%a^gdrf4n
 DEBUG = False  # Must be False for Render deployment
 
 ALLOWED_HOSTS = [
-    'sindhimaitryuen.onrender.com',
-    'www.sindhimaitryuen.com',
-    'sindhimaitryuen.com',
+    'sindhiMaitryuen.onrender.com',
+    'www.sindhiMaitryuen.com',
+    'sindhiMaitryuen.com',
     '.onrender.com',
     '127.0.0.1',
     'localhost',

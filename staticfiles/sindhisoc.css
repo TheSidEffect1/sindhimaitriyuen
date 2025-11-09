@@ -15,6 +15,6 @@ body {
   height: 75%;
   display: block;
   padding-top: 75px;
-  margin: 0 auto 37px;
+  margin: 0 auto 0 auto;
   border-radius: 10px;
 }

@@ -27,7 +27,7 @@ body {
 
 .left-box, .right-box {
   text-align: justify;
-  line-height: 1.8;
+  line-height: 1.65;
 }
 
 .left-box {
@@ -43,7 +43,7 @@ body {
 }
 
 .ad-box {
-  margin-top: 8px !important;
+  margin-top: 10px !important;
 }
 
 

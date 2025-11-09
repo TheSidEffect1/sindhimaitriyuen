@@ -11,11 +11,10 @@ body {
 
 /* Hero Section */
 .hero-img {
-  width: 73%;
+  width: 67%;
   height: 75%;
   display: block;
   padding-top: 75px;
   margin: 0 auto;
-  margin-bottom: -14px;
   border-radius: 10px;
 }

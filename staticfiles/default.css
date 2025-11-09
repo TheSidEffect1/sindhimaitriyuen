@@ -90,11 +90,11 @@
 
 /* Ad Box */
 .ad-box {
-  width: 28cm;      /* slightly narrower to fit screen */
-  height: 4.2cm;    /* proportionally reduced */
+  width: 30cm;      /* slightly narrower to fit screen */
+  height: 5cm;    /* proportionally reduced */
   background: linear-gradient(90deg, #e6f0ff, #fafdff);
   border: 2px dashed #99bbff;
-  margin: 25px auto 0 auto;
+  margin: 0 auto 0 auto;
   border-radius: 8px;
   display:flex;
   justify-content:center;
