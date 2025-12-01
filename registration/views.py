@@ -6,6 +6,11 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.http import JsonResponse
 from .models import Registration
+import random, requests
+from django.conf import settings
+from django.http import JsonResponse
+from django.core.cache import cache
+from django.views.decorators.http import require_POST
 import json
 
 
@@ -44,6 +49,90 @@ def afterlogin(request):
 
 def profile(request):
     return render(request, 'login/profile.html')
+
+
+# -------------------------
+# OTP Sending
+# -------------------------
+
+
+FAST2SMS_API_KEY    = settings.FAST2SMS_API_KEY
+DLT_TEMPLATE_ID     = settings.FAST2SMS_DLT_TEMPLATE_ID  # e.g. "1207........"
+SENDER_ID           = settings.FAST2SMS_SENDER_ID        # "SMBSMJ"
+OTP_TTL_SECONDS     = getattr(settings, "OTP_TTL_SECONDS", 300)
+OTP_RESEND_COOLDOWN = getattr(settings, "OTP_RESEND_COOLDOWN", 45)
+
+def _digits_only(s): return "".join(ch for ch in (s or "") if ch.isdigit())
+
+@require_POST
+def send_otp(request):
+    data = json.loads(request.body.decode("utf-8"))
+    mobile = _digits_only(data.get("mobile"))
+
+    if len(mobile) != 10:
+        return JsonResponse({"success": False, "error": "Invalid mobile number"})
+
+    if cache.get(f"otp_cooldown_{mobile}"):
+        return JsonResponse({"success": False, "error": "Please wait before requesting a new OTP."})
+
+    otp = f"{random.randint(100000, 999999)}"
+    cache.set(f"otp_{mobile}", otp, OTP_TTL_SECONDS)
+    cache.set(f"otp_cooldown_{mobile}", True, OTP_RESEND_COOLDOWN)
+
+    payload = {
+        "route": "dlt",
+        "sender_id": SENDER_ID,
+        "message": (
+            "Dear User,\n"
+            "Your OTP to register on SindhiMaitriyen.com is {#var#}. "
+            "Valid for 5 minutes. Please do not share this OTP.\n\n"
+            "Regards,\n"
+            "Israni International"
+        ),
+        "variables_values": otp,
+        "flash": "0",
+        "numbers": mobile,
+        "dlt_template_id": DLT_TEMPLATE_ID,
+    }
+    headers = {
+        "authorization": FAST2SMS_API_KEY,
+        "Content-Type": "application/json",
+    }
+
+    try:
+        r = requests.post("https://www.fast2sms.com/dev/bulkV2", json=payload, headers=headers, timeout=10)
+        resp = r.json() if r.headers.get("content-type","").startswith("application/json") else {}
+        if r.status_code != 200 or not resp.get("return", False):
+            # optional: log r.text for debugging
+            return JsonResponse({"success": False, "error": "SMS send failed. Try again."})
+    except Exception:
+        return JsonResponse({"success": False, "error": "SMS provider error. Try again."})
+
+    return JsonResponse({"success": True})
+
+
+# -------------------------
+# OTP Verification
+# -------------------------
+
+@require_POST
+def verify_otp(request):
+    data = json.loads(request.body.decode("utf-8"))
+    mobile = _digits_only(data.get("mobile"))
+    otp = _digits_only(data.get("otp"))
+
+    if len(mobile) != 10 or len(otp) != 6:
+        return JsonResponse({"success": False, "error": "Invalid input"})
+
+    saved = cache.get(f"otp_{mobile}")
+    if not saved:
+        return JsonResponse({"success": False, "error": "OTP expired"})
+
+    if otp != saved:
+        return JsonResponse({"success": False, "error": "Incorrect OTP"})
+
+    cache.delete(f"otp_{mobile}")  # one-time use
+    return JsonResponse({"success": True})
 
 
 # -------------------------

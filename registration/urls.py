@@ -32,6 +32,13 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
 
     # ------------------------
+    # OTP
+    # ------------------------
+    path("send_otp/", views.send_otp),
+    path("verify_otp/", views.verify_otp),
+
+
+    # ------------------------
     # AJAX Save Endpoints
     # ------------------------
     path('save_registration/', views.save_registration, name='save_registration'),

@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="{% static 'registration/page1.css' %}">
 </head>
 <body>
-  {% csrf_token %}
 <div class="container">
   <h2>Step 1: Basic Info</h2>
 
   <form id="registrationForm" autocomplete="off" novalidate>
+    {% csrf_token %}
     <div class="grid">
       <!-- LEFT COLUMN -->
       <div class="column">
@@ -86,8 +86,9 @@
   <p>Your Ad Here — 5×30 cm Banner</p>
 </div>
 
-<script src="{% static 'registration/page1.js' %}">
-  const csrftoken = '{{ csrf_token }}';
+<script>
+    window.csrftoken = "{{ csrf_token }}";
 </script>
+<script src="{% static 'registration/page1.js' %}"></script>
 </body>
 </html>

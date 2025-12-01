@@ -15,7 +15,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-const csrftoken = getCookie('csrftoken');
+const csrftoken = window.csrftoken;
 
 // ========================
 // Image previews & Base64
@@ -70,39 +70,73 @@ if (aadharInput) {
 });
 
 // ========================
-// OTP Verification (Demo)
+// OTP Verification
 // ========================
+
 let otpVerified = false;
 
-const sendOtpBtn = document.getElementById("sendOtp");
-if (sendOtpBtn) {
-    sendOtpBtn.addEventListener("click", () => {
-        const mobInput = document.getElementById("yourMob");
-        if (!mobInput) return;
-        const mob = mobInput.value.replace(/\s/g, "");
-        if (mob.length !== 10) return alert("Enter a valid 10-digit mobile number!");
-        const otpSection = document.getElementById("otpVerifySection");
-        if (otpSection) otpSection.classList.remove("hidden");
-        alert("OTP sent (demo). Use 1234 to verify.");
-    });
-}
+document.getElementById("sendOtp").addEventListener("click", async () => {
+    const mobInput = document.getElementById("yourMob");
+    if (!mobInput) return;
+    const mob = mobInput.value.replace(/\s/g, "");
 
-const verifyOtpBtn = document.getElementById("verifyOtp");
-if (verifyOtpBtn) {
-    verifyOtpBtn.addEventListener("click", () => {
-        const otpInput = document.getElementById("otpInput");
-        if (!otpInput) return;
-        const otp = otpInput.value.trim();
-        if (otp === "1234") {
+    if (mob.length !== 10) {
+        alert("Enter a valid 10-digit mobile number!");
+        return;
+    }
+
+    try {
+        const res = await fetch("/send_otp/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken
+            },
+            body: JSON.stringify({ mobile: mob })
+        });
+
+        const result = await res.json();
+
+        if (result.success) {
+            document.getElementById("otpVerifySection").classList.remove("hidden");
+            alert("OTP sent to your mobile number.");
+        } else {
+            alert(result.error || "Failed to send OTP.");
+        }
+    } catch (err) {
+        alert("Server error. Try again.");
+    }
+});
+
+
+document.getElementById("verifyOtp").addEventListener("click", async () => {
+    const mob = document.getElementById("yourMob").value.replace(/\s/g, "");
+    const otp = document.getElementById("otpInput").value.trim();
+
+    try {
+        const res = await fetch("/verify_otp/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken
+            },
+            body: JSON.stringify({ mobile: mob, otp })
+        });
+
+        const result = await res.json();
+
+        if (result.success) {
             otpVerified = true;
             alert("OTP Verified!");
-            const nextBtn = document.getElementById("nextBtn");
-            if (nextBtn) nextBtn.disabled = false;
+            document.getElementById("nextBtn").disabled = false;
         } else {
-            alert("Invalid OTP");
+            alert(result.error || "OTP verification failed.");
         }
-    });
-}
+    } catch (err) {
+        alert("Server error. Try again.");
+    }
+});
+
 
 // ========================
 // Form Submission (Step 1)

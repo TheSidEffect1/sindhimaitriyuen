@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # -------------------------------
 # SECURITY
 # -------------------------------
-SECRET_KEY = 'django-insecure-!e*7asa9lcm&dc&gia%qg$d6%khcz-f1k(8fe=$ax%a^gdrf4n'
+SECRET_KEY = 'django-insecure-!e*7asa9lcm&dc&gia%qg$d6%khcz -f1k(8fe=$ax%a^gdrf4n'
 DEBUG = False  # Must be False for Render deployment
 
 ALLOWED_HOSTS = [
@@ -27,6 +27,22 @@ ALLOWED_HOSTS = [
     'localhost',
 ]
 
+
+# -------------------------------
+# OTP
+# -------------------------------
+FAST2SMS_API_KEY = "Mf8opzbtGTFrQNHSBw9c3Ina6ULd0Cl5VxAYvZiyjOJe7s1PXK6UNDKGuS375q0FmeM4Wst1Xahl2R9v"
+FAST2SMS_DLT_TEMPLATE_ID = "1207176449822222465"   # from Jio
+FAST2SMS_SENDER_ID = "SMBSMJ"
+OTP_TTL_SECONDS = 300          # 5 min
+OTP_RESEND_COOLDOWN = 45       # 45 sec
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "sindhimate-cache"
+    }
+}
 
 # -------------------------------
 # APPLICATIONS
